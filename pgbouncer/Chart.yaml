@@ -1,5 +1,5 @@
 name: pgbouncer
-version: 0.2.1
+version: 0.2.3
 description: Chart for PGBouncer
 keywords:
   - postgresql
@@ -7,8 +7,8 @@ keywords:
   - sql
 home: https://pgbouncer.github.io
 sources:
-  - https://github.com/fopark/charts
+  - https://github.com/intellix/helm-charts
 maintainers:
-  - name: Parker Roan
-    email: roanresources@gmail.com
+  - name: Dominic Watson
+    email: intellix@gmail.com
 engine: gotpl

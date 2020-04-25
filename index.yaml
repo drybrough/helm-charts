@@ -1,9 +1,9 @@
 apiVersion: v1
 entries:
   pgbouncer:
-  - created: 2019-02-09T01:34:06.148233554-06:00
+  - created: "2020-05-15T20:20:20.088941+02:00"
     description: Chart for PGBouncer
-    digest: e432a354ea8317da886feec8b1819b8dc603f46db9bc97d8e371fa1b6c413ac3
+    digest: 61b3674091881fc8afef70a7db40bdb6e41ee6948c150c315f1dc71e705f9279
     engine: gotpl
     home: https://pgbouncer.github.io
     keywords:
@@ -17,6 +17,6 @@ entries:
     sources:
     - https://github.com/intellix/helm-charts
     urls:
-    - pgbouncer-0.2.2.tgz
-    version: 0.2.2
-generated: 2019-02-09T01:34:06.147556418-06:00
+    - http://0.0.0.0:8879/pgbouncer-0.2.3.tgz
+    version: 0.2.3
+generated: "2020-05-15T20:20:20.087889+02:00"

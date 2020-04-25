@@ -35,6 +35,9 @@ spec:
         - name: pgbouncer-probes
           mountPath: /pgbouncer-probes
           readOnly: true
+        - name: certificates
+          mountPath: ~/.postgresql
+          readOnly: true
         env:
         - name: PG_USER
           value: {{ .Values.username }}
@@ -70,12 +73,20 @@ spec:
           successThreshold: {{ .Values.probes.liveness.successThreshold }}
           failureThreshold: {{ .Values.probes.liveness.failureThreshold }}
         {{- end }}
-{{- if .Values.nodeSelector }}
-      nodeSelector:
-        {{- range $key, $value := .Values.nodeSelector }}
-        {{ $key }}: {{ $value }}
-        {{- end }}
-{{- end }}
+      tolerations:
+        - key: "role"
+          operator: "Equal"
+          value: "pgbouncer"
+          effect: "NoSchedule"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: "role"
+                  operator: "In"
+                  values:
+                    - "pgbouncer"
       volumes:
         - name: pgbouncer-config
           configMap:
@@ -83,6 +94,9 @@ spec:
         - name: pgbouncer-probes
           secret: 
             secretName: {{ .Release.Name }}-probes-settings
+        - name: certificates
+          secret:
+            secretName: {{ .Release.Name }}-certs
       securityContext:
         runAsUser: 1000
         fsGroup: 1000

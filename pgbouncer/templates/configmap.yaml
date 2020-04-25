@@ -12,13 +12,20 @@ data:
   listen_addr: '*'
   max_client_conn: {{ .Values.maxClientConnections | quote }}
   default_pool_size: {{ .Values.poolSize | quote }}
-  server_idle_timeout: {{ .Values.serverIdleTimeout | quote }}
-  server_lifetime: {{ .Values.serverLifetime | quote }}
   pool_mode: {{ .Values.poolMode | quote }}
   log_connections: {{ .Values.logConnections | quote }}
   log_disconnections: {{ .Values.logDisconnections | quote }}
   stats_period: {{ .Values.statsPeriod | quote }}
   listen_backlog: {{ .Values.listenBacklog | quote }}
+  server_idle_timeout: {{ .Values.serverIdleTimeout | quote }}
+  server_lifetime: {{ .Values.serverLifetime | quote }}
+  client_tls_sslmode: 'require'
+  client_tls_cert_file: '~/.postgresql/postgresql.crt'
+  client_tls_key_file: '~/.postgresql/postgresql.key'
+  client_tls_ca_file: '~/.postgresql/root.crt'
+  server_tls_sslmode: 'require'
+  server_tls_cert_file: '~/.postgresql/postgresql.crt'
+  server_tls_key_file: '~/.postgresql/postgresql.key'
 {{- if .Values.injectConfig -}}
 {{- range $key, $val := .Values.injectConfig }}
   {{ $key }}: {{ $val | quote }}
