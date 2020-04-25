@@ -11,12 +11,12 @@ entries:
     - database
     - sql
     maintainers:
-    - email: roanresources@gmail.com
-      name: Parker
+    - email: intellix@gmail.com
+      name: Dominic Watson
     name: pgbouncer
     sources:
-    - https://github.com/fopark/charts
+    - https://github.com/intellix/helm-charts
     urls:
-    - pgbouncer-0.2.1.tgz
-    version: 0.2.1
+    - pgbouncer-0.2.2.tgz
+    version: 0.2.2
 generated: 2019-02-09T01:34:06.147556418-06:00
